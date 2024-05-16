@@ -24,7 +24,7 @@ services:
     depends_on:
       - "db"
   react-ui:
-    image: bcollazo/catanatron-react-ui:latest
+    image: pada/catanatron-react-ui:latest
     build: ./ui
     ports:
       - 3000:3000

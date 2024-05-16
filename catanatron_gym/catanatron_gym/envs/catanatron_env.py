@@ -207,6 +207,7 @@ class CatanatronEnv(gym.Env):
         self._advance_until_p0_decision()
 
         observation = self._get_observation()
+        self._update_action_space()
         info = dict(valid_actions=self.get_valid_actions())
 
         winning_color = self.game.winning_color()
@@ -237,6 +238,7 @@ class CatanatronEnv(gym.Env):
         self._advance_until_p0_decision()
 
         observation = self._get_observation()
+        self._update_action_space()
         info = dict(valid_actions=self.get_valid_actions())
 
         return observation, info
@@ -258,6 +260,9 @@ class CatanatronEnv(gym.Env):
             and self.game.state.current_color() != self.p0.color
         ):
             self.game.play_tick()  # will play bot
+
+    def _update_action_space(self):
+      self.action_space = self.get_valid_actions()
 
 
 CatanatronEnv.__doc__ = f"""
