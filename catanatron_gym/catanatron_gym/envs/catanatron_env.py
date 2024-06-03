@@ -149,7 +149,7 @@ class CatanatronEnv(gym.Env):
         self.max_invalid_actions = 10
 
         # TODO: Make self.action_space smaller if possible (per map_type)
-        # self.action_space = spaces.Discrete(ACTION_SPACE_SIZE)
+        self.action_space = spaces.Discrete(ACTION_SPACE_SIZE)
 
         if self.representation == "mixed":
             channels = get_channels(len(self.players))
@@ -207,7 +207,7 @@ class CatanatronEnv(gym.Env):
         self._advance_until_p0_decision()
 
         observation = self._get_observation()
-        self._update_action_space()
+        # self._update_action_space()
         info = dict(valid_actions=self.get_valid_actions())
 
         winning_color = self.game.winning_color()
@@ -238,7 +238,7 @@ class CatanatronEnv(gym.Env):
         self._advance_until_p0_decision()
 
         observation = self._get_observation()
-        self._update_action_space()
+        # self._update_action_space()
         info = dict(valid_actions=self.get_valid_actions())
 
         return observation, info
@@ -261,8 +261,8 @@ class CatanatronEnv(gym.Env):
         ):
             self.game.play_tick()  # will play bot
 
-    def _update_action_space(self):
-      self.action_space = self.get_valid_actions()
+    # def _update_action_space(self):
+    #   self.action_space = self.get_valid_actions()
 
 
 CatanatronEnv.__doc__ = f"""

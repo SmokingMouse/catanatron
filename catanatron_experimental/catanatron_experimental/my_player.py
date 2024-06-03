@@ -18,4 +18,5 @@ class MyPlayer(Player):
         # ===== YOUR CODE HERE =====
         # As an example we simply return the first action:
         return playable_actions[0]
+        
         # ===== END YOUR CODE =====
